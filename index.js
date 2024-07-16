@@ -5,6 +5,9 @@ import express from 'express'
 import loginRoutes from './routes/loginRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
 import apiRoutes from './routes/apiRoutes.js';
+import dotenv from 'dotenv';
+
+dotenv.config({path: ".env"});
 
 const app = express();
 
