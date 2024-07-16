@@ -1,0 +1,32 @@
+extends ../layout/admin
+
+block contenido
+
+    section(class="seccion seccion-lista-usuarios" style="--img:url('https://st2.depositphotos.com/1017228/7108/i/450/depositphotos_71080145-stock-photo-gym-interior-with-equipment.jpg')")
+        div(class="container-usuarios")
+            h2 Usuarios Registrados 
+
+            div(class="filtrar-usuarios-conteiner")
+                div(class="input-container")
+                    label(for="membresiaSelect") Tipo Membresia: 
+                    select(name="membresia" id="membresiaSelect" )
+                        option(value="") -- Seleccione --
+                            each membresia in membresias 
+                                option(value= membresia.id )= membresia.membresiaUsuario  
+
+                div(class="input-container")
+                    label(for="activoSelect") Activo: 
+                    select(name="activo" id="activoSelect" )
+                        option(value="") -- Seleccione --
+                            option(value="true")  Si 
+                            option(value="false")  No
+
+                div(class="input-container")
+                    label(for="codigoSelect") Código: 
+                    input(type="number" value="" id="codigoSelect")
+
+            ul(class="lista-usuarios")
+            input(type="hidden" name="_csrf" value=csrfToken id="csrf-Token")
+
+block scripts 
+    script(src="/js/filtrosBusqueda.js")

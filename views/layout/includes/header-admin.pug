@@ -1,0 +1,27 @@
+header 
+    div(class="titulo-container")
+        h1(class="anton-sc-regular") Gym Strong 
+
+    nav(class="navegacion-container")
+        ul(class="container-navegacion-desktop") 
+            li 
+                a(href="/gimnasio/inicio" class="navegacion")  Inicio
+            li 
+                a(href="/gimnasio/listaUsuarios" class="navegacion")  Usuarios
+            li 
+                form(action="/gimnasio/cerrarSesion" method="POST" ) 
+                    input(type="hidden" name="_csrf" value = csrfToken)
+                    input(type="submit" value="Cerrar Sesion" class="navegacion")
+
+        div(class="navegacion-container-mobile")
+            i(class="fa-solid fa-bars" id="boton-menu")
+            ul(class="navegacion-oculta ocultar")
+                li 
+                    a(href="/gimnasio/inicio" class="navegacion")  Inicio
+                li 
+                    a(href="/gimnasio/listaUsuarios" class="navegacion")  Usuarios
+                li 
+                    form(action="/gimnasio/cerrarSesion" method="POST" ) 
+                        input(type="hidden" name="_csrf" value = csrfToken)
+                        input(type="submit" value="Cerrar Sesion" class="navegacion")
+                

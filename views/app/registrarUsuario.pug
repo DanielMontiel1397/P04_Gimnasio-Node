@@ -1,0 +1,49 @@
+extends ../layout/admin
+
+block contenido 
+    section(id="" class="seccion seccion-registrar-usuario" style="--img:url('https://media.revistagq.com/photos/65b12cd1df908a3c3a4d7373/16:9/w_2560%2Cc_limit/fitness%2520portada.jpg')")
+
+        div(class="formulario-container form-register")
+
+            form(action="/gimnasio/registrarUsuario" method="POST" class="formularios") 
+                input(type="hidden" name="_csrf" value=csrfToken)
+
+                div(class="input-container")
+                    input(type="text" id="nombre" name="nombre" value= usuario ? usuario.nombre : '')
+                    label(for="nombre") Nombre:
+                    if mensajeNombre
+                        p(class="mensaje-error")= mensajeNombre.msg 
+                div(class="input-container")
+                    input(type="text" id="numeroTelefono" name="numeroTelefono" value= usuario ? usuario.telefono : '')
+                    label(for="numero") Telefono: 
+                    if mensajeTelefono
+                        p(class="mensaje-error")= mensajeTelefono.msg 
+                div(class="input-container")
+                    input(type="number" name="edad" value= usuario ? usuario.edad : '')
+                    label(for="edad") Edad: 
+                    if mensajeEdad
+                        p(class="mensaje-error")= mensajeEdad.msg 
+
+                div(class="input-container-columna")
+
+                    div(class="columna") 
+                        label(for="sexo") Sexo: 
+                        select(name="sexo" id="sexo" )
+                            option(value="") -- Seleccione --
+                            option(value="hombre" selected= usuario.sexo ? usuario.sexo == 'hombre' ? true : false : null) Hombre 
+                            option(value="mujer" selected= usuario.sexo ? usuario.sexo == 'mujer' ? true : false : null) Mujer 
+                        if mensajeSexo
+                            p(class="mensaje-error")= mensajeSexo.msg 
+                    
+                    div(class="columna") 
+                        label(for="membresia") Membresia: 
+                        select(name="membresia" id="membresia" )
+                            option(value="") -- Seleccione --
+                            each membresia in membresias 
+                                option(value= membresia.id selected= usuario.membresia ? usuario.membresia == membresia.id ? true : false : null )= membresia.membresiaUsuario 
+                        if mensajeMembresia
+                            p(class="mensaje-error")= mensajeMembresia.msg 
+                input(type="submit" value="Agregar usuario" class="boton-inicio boton-login")
+
+block scripts 
+    script(src="/js/validacionForms.js")

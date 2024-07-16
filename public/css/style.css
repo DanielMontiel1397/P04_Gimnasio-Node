@@ -1,0 +1,710 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing:border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body{
+    font-family: sans-serif;
+    max-width: 100vw;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: #2d4042;
+    position: relative;
+}
+
+header .titulo-container{
+    font-size: 2rem;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+header .navegacion-container .container-navegacion-desktop{
+    list-style: none;
+    display: flex;
+    
+}
+
+header .navegacion-container .container-navegacion-desktop li{
+    margin: 0 10px;
+}
+
+header .navegacion-container .container-navegacion-desktop li .navegacion{
+    display: block;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.726);
+    transition: all 0.5s ease-out;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+header .navegacion-container .container-navegacion-desktop li .navegacion:hover{
+    color: #fb0c43;
+    border-bottom: 3px solid white;
+}
+
+.titulo-pagina{
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.anton-sc-regular {
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+/* ESTILOS SECCION GENERAL */
+
+.seccion{
+    background: linear-gradient(#3a3838cc,rgba(33,16,16,.5)),var(--img);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.seccion-login,
+.seccion-registrar-usuario{
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*///////// SECCION INICIO//////// */
+
+#titulos-inicio{
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 150px 50px auto;
+    grid-template-areas: 
+        "titulo-1 titulo-2"
+        "titulo-1 titulo-3"
+        "boton boton"
+    ;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.89);
+
+}
+
+#titulos-inicio .titulo-1{
+    grid-area: titulo-1;
+    font-size: 3rem;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#titulos-inicio .titulo-2{
+    grid-area: titulo-2;
+    font-size: 13rem;
+    letter-spacing: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%
+}
+
+#titulos-inicio .titulo-3{
+    grid-area: titulo-3;
+    font-size: 3rem;
+    letter-spacing: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.boton-inicio{
+    grid-area: boton;
+    width: 70%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #fb0c43;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    color: rgb(27, 27, 85);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-login{
+    margin: auto;
+}
+
+.boton-registrar-usuario{
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+.boton-inicio:hover{
+    background-color: rgba(245, 245, 220, 0.829);
+}
+
+/*SECCION REGISTRAR Y LOGIN USUARIO*/
+
+.formulario-container{
+    width: 80%;
+    max-width: 670px;
+    background-color: #424242;
+    padding: 80px;
+    border: 5px solid gray;
+    border-radius: 10px;
+    opacity: 0.8;
+    font-size: 2rem;
+}
+
+.formulario-container.form-register{
+    margin: 80px 0px;
+}
+
+.formulario-container .formularios{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formulario-container .input-container{
+    position: relative;
+}
+
+.formulario-container .input-container input{
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.formulario-container .input-container label{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    color: white;
+}
+
+.formulario-container .input-container input:focus ~ label,
+.formulario-container .input-container input.not-empty ~ label
+{
+    top: -30%;
+    left: 0;
+    color: #f4bc03;
+    font-size: 1.4rem;
+}
+
+.formulario-container .input-container-columna{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formulario-container .input-container-columna .columna{
+    width: 50%;
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-container select{
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    font-size: 2rem;
+    transition: all 0.3s ease-out;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.formulario-container select:hover{
+    background-color: rgb(79, 119, 128);
+}
+
+.formulario-container select:valid{
+    background-color: #e9bf34e5;
+}
+
+.mensaje-error{
+    color: red;
+    font-size: 1.6rem;
+    text-align: start;
+    margin-top: 5px;
+}
+
+
+/* //SECCION USUARIOS/// */
+
+.seccion-lista-usuarios{
+    align-items: start;
+}
+
+.container-usuarios{
+    color: white;
+    width: 80%;
+    max-width: 860px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-usuarios h2:first-child{
+    border-bottom: 2px solid red;
+}
+
+.container-usuarios h2{
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.lista-usuarios{
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.usuario{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr 1fr;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #2d4042;
+    border-radius: 10px;
+    border: 1px solid white;
+    gap: 10px;
+}
+
+.codigo-container{
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.imagen-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #888686;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.imagen-container img{
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+}
+
+.informacion-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    gap: 10px;
+    max-width: 200px;
+}
+
+.usuario p{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.informacion-container> p:first-child{
+    font-weight: 900;
+}
+
+
+.usuario span{
+    font-weight: normal;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.botones-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.boton{
+    width: 100%;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+.boton-editar{
+    background-color: #84cc1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-eliminar{
+    background-color: #fb0c43;
+}
+
+.boton:hover{
+    color: rgb(158, 154, 154);
+    transform: scale(1.1);
+}
+
+.informacion-container .activo-inactivo{
+    display: block;
+    background-color:#84cc1b;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+/* ///////SECCION EDITAR USUARIO //////// */
+.form-editar{
+    margin: 80px 0px;
+    max-width: 900px;
+}
+
+.editar-usuario-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.foto-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foto-container .imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #888686;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+
+.foto-container img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+#archivo-input{
+    display: none;
+}
+
+.input-foto label{
+    display: inline-block;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #c0392b;
+    text-align: center;
+    padding: 15px 35px;
+    font-size: 1.6rem;
+    letter-spacing: 0.5rem;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 5px 15px 25px rgba(0,0,0,0.35);
+    border-radius: 3px;
+}
+
+.input-foto label i{
+    font-size:  20px;
+    margin-right: 5px;
+}
+
+.input-foto label:active{
+    transform: scale(0.9);
+}
+
+/* //////FILTRO ///////*/
+.filtrar-usuarios-conteiner{
+    display: flex;
+    justify-content: space-around;
+}
+
+.filtrar-usuarios-conteiner label{
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.filtrar-usuarios-conteiner select,
+.filtrar-usuarios-conteiner input{
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    font-size: 2rem;
+    transition: all 0.3s ease-out;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.filtrar-usuarios-conteiner input{
+    background: white;
+    color: black;
+}
+
+.filtrar-usuarios-conteiner select:valid{
+    background-color: #e9bf34e5;
+}
+
+.bloquear{
+    display: none;
+}
+
+.navegacion-container-mobile{
+    display: none;
+}
+
+/* MEDIA QUERYS */
+ @media  (width <= 720px){
+
+    /* HEADER */
+    header .navegacion-container .container-navegacion-desktop{
+        display: none;
+    }
+
+    .navegacion-container-mobile{
+        display: block;
+    }
+
+    .navegacion-container-mobile i{
+        font-size: 4rem;
+        color: white;
+        transition: 0.3s all ease-in;
+    }
+     .navegacion-container-mobile i:hover{
+        color: red;
+     }
+
+     .navegacion-oculta.ocultar{
+        display: none;
+     }
+
+     .navegacion-oculta{
+        list-style: none; 
+        position: absolute;  
+        background-color: #2d4042;
+        left: 0px;
+        top: 70px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        z-index: 100;
+     }
+
+     .navegacion-oculta li .navegacion{
+        display: block;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.726);
+        transition: all 0.5s ease-out;
+        background-color: transparent;
+        border: none;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+     }
+
+     .navegacion-oculta li .navegacion:hover{
+        color: #fb0c43;
+        border-bottom: 3px solid white;
+     }
+
+     /* SECCION INICIO */
+     #titulos-inicio{
+        margin: auto auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 10px;
+        grid-template-areas:
+        "titulo-1"
+        "titulo-2"
+        "titulo-3"
+        "boton";
+     }
+
+     #titulos-inicio .titulo-1{
+        font-size: 2rem;
+        writing-mode: horizontal-tb; /* O simplemente puedes eliminar esta línea */
+        text-orientation: mixed; 
+        justify-content: center;
+     }
+
+     #titulos-inicio .titulo-2{
+        font-size: 3rem;
+     }
+
+    .boton-inicio{
+        padding: 15px;
+        margin: auto auto;
+        height: auto;
+    }
+
+    /* SECCION REGISTRO */
+    .seccion-registrar-usuario{
+        justify-content: start;
+    }
+
+    .formulario-container{
+        width: 90%;
+        padding: 30px;
+        font-size: 1.6rem;
+    }
+
+    .formulario-container.form-register{
+        margin: 10px 0px;
+    }
+
+    .formulario-container .formularios{
+        gap: 40px;
+    }
+
+    .formulario-container .input-container-columna{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .formulario-container .input-container-columna .columna{
+        width: 100%;
+    }
+
+    .formulario-container .boton-inicio{
+        width: 100%;
+    }
+
+    /* SECCION USUARIOS */
+    .container-usuarios{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .filtrar-usuarios-conteiner{
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .filtrar-usuarios-conteiner .input-container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto auto;
+        align-items: center;
+    }
+
+    .filtrar-usuarios-conteiner .input-container select{
+        width: 100%;
+    }
+
+    .container-usuarios .lista-usuarios{
+        width: 95%;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .usuario{
+        grid-template-columns: auto;
+        justify-items: center;
+    }
+
+    .usuario .mobile{
+        display: none;
+    }
+
+    .codigo-container{
+        width: 100%;
+        flex-direction: row;
+    }
+
+    /* SECCION EDITAR USUARIO */
+    .formulario-container{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .form-editar{
+        margin: 60px 5px;
+
+    }
+
+    .editar-usuario-container{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .editar-usuario-container .informacion-usuario{
+        order: 2;
+    }
+
+    .editar-usuario-container .foto-container{
+        order: 1;
+    }
+
+ }
