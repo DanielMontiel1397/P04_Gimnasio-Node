@@ -51,6 +51,7 @@
     
         //Mostrar todos los usuarios en el html
         const mostrarUsuarios = usuarios => {
+            console.log(usuarios);
             //Limpiar Usuarios
             limpiarUsuarios();
             usuarios.forEach(usuario => {
@@ -69,7 +70,7 @@
                             <div class="informacion-container">
                                 <p>${usuario.nombre}</p>
                                 <p>Telefono: <span>${usuario.numeroTelefono}</span></p>
-                                <p>Usuario: <span class="activo-inactivo">${usuario.activo.toString() === 'true' ? 'Activo' : 'Inactivo'}</span></p>
+                                <p>Usuario: <span class="activo-inactivo">${usuario.activo.toString() == 'true' ? 'Activo' : 'Inactivo'}</span></p>
                             </div>
                             <div class="informacion-container mobile">
                                 <p>Fecha de Ingreso:</p>
