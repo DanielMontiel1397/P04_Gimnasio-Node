@@ -27,7 +27,6 @@
         })
 
         codigoSelect.addEventListener('blur', (e) => {
-            console.log('hola');
             if(e.target.value.trim() !== ''){
                 filtros.codigo = e.target.value;
                 filtrarUsuarios();
@@ -98,11 +97,11 @@
         }
 
         const filtrarMembresia = usuario => {
-            return filtros.membresia ? usuario.membresiaId === filtros.membresia : usuario
+            return filtros.membresia ? usuario.membresiaId.toString() == filtros.membresia.toString() : usuario
         }
 
         const filtrarActivo = usuario => {
-            return filtros.activo ? usuario.activo.toString() == filtros.activo : usuario
+            return filtros.activo ? usuario.activo.toString() == filtros.activo.toString() : usuario
         }
 
         const filtrarCodigo = usuario => {
