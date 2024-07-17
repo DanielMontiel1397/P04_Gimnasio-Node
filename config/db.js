@@ -9,7 +9,7 @@ const db = new Sequelize(
     process.env.BD_PASSWORD,
     {
         host: process.env.BD_HOST,
-        port: 3306,
+        port: process.env.BD_PORT,
         dialect: 'mysql',
         define: {
             timestamps:true
