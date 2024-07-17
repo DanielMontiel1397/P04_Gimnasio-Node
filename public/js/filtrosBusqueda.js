@@ -69,7 +69,7 @@
                             <div class="informacion-container">
                                 <p>${usuario.nombre}</p>
                                 <p>Telefono: <span>${usuario.numeroTelefono}</span></p>
-                                <p>Usuario: <span class="activo-inactivo">${usuario.activo === true ? 'Activo' : 'Inactivo'}</span></p>
+                                <p>Usuario: <span class="activo-inactivo">${usuario.activo.toString() === 'true' ? 'Activo' : 'Inactivo'}</span></p>
                             </div>
                             <div class="informacion-container mobile">
                                 <p>Fecha de Ingreso:</p>

@@ -41,7 +41,7 @@ app.use('/gimnasio/login', loginRoutes);
 app.use('/gimnasio',adminRoutes);
 app.use('/api',apiRoutes);
 
-const port = process.env.BD_PORT || 3000;
+const port = 3000;
 app.listen(port,()=>{
     console.log('El servidor esta funcionando en el puerto: ' + port);
 })
