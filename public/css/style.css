@@ -521,6 +521,33 @@ header .navegacion-container .container-navegacion-desktop li .navegacion:hover{
     display: none;
 }
 
+/*PAGINA 404*/
+.not-found{
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 66px;
+    border: 2px solid gray;
+}
+
+.not-found div{
+    width: 40%;
+    height: 40%;
+    border: 2px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border-radius: 50%;
+}
+
+.not-found div p{
+    text-align: center;
+}
+
 /* MEDIA QUERYS */
  @media  (width <= 720px){
 

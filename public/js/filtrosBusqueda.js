@@ -26,7 +26,7 @@
             filtrarUsuarios();
         })
 
-        codigoSelect.addEventListener('blur', (e) => {
+        codigoSelect.addEventListener('input', (e) => {
             if(e.target.value.trim() !== ''){
                 filtros.codigo = e.target.value;
                 filtrarUsuarios();
@@ -51,11 +51,10 @@
     
         //Mostrar todos los usuarios en el html
         const mostrarUsuarios = usuarios => {
-            console.log(usuarios);
+          
             //Limpiar Usuarios
             limpiarUsuarios();
             usuarios.forEach(usuario => {
-
 
                const usuarioHTML = document.createElement('li');
                usuarioHTML.classList.add('usuario');
@@ -70,7 +69,7 @@
                             <div class="informacion-container">
                                 <p>${usuario.nombre}</p>
                                 <p>Telefono: <span>${usuario.numeroTelefono}</span></p>
-                                <p>Usuario: <span class="activo-inactivo">${usuario.activo.toString() == '1' ? 'Activo' : 'Inactivo'}</span></p>
+                                <p>Usuario: <span class="activo-inactivo">${(usuario.activo.toString() == '1' || usuario.activo.toString() == 'true') ? 'Activo' : 'Inactivo'}</span></p>
                             </div>
                             <div class="informacion-container mobile">
                                 <p>Fecha de Ingreso:</p>
@@ -106,7 +105,7 @@
         }
 
         const filtrarCodigo = usuario => {
-            return filtros.codigo ? usuario.codigo === filtros.codigo : usuario
+            return filtros.codigo ? usuario.codigo.startsWith(filtros.codigo.toString()) : usuario
         }
 
         function limpiarUsuarios(){

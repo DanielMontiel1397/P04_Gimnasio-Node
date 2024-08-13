@@ -19,7 +19,7 @@ block contenido
                     if mensajeTelefono
                         p(class="mensaje-error")= mensajeTelefono.msg 
                 div(class="input-container")
-                    input(type="number" name="edad" value= usuario ? usuario.edad : '')
+                    input(type="text" name="edad" value= usuario ? usuario.edad : '')
                     label(for="edad") Edad: 
                     if mensajeEdad
                         p(class="mensaje-error")= mensajeEdad.msg 

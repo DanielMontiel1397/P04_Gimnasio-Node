@@ -13,7 +13,7 @@ const adminInicio = (req,res) => {
 const formularioRegistro = async (req,res) => {
 
     const membresias = await Membresia.findAll();
-
+    console.log(membresias);
     res.render('app/registrarUsuario',{
         csrfToken: req.csrfToken(),
         membresias,
@@ -23,9 +23,9 @@ const formularioRegistro = async (req,res) => {
 
 const guardarUsuario = async (req,res) => {
     //Validar Campos
-    await check('nombre').notEmpty().withMessage('El Nombre no puede ir Vacio').run(req);
-    await check('numeroTelefono').notEmpty().withMessage('El Telefono no puede ir vacio').run(req);
-    await check('edad').isInt({gt:0}).withMessage('La Edad no puede ir vacia').run(req);
+    await check('nombre').notEmpty().withMessage('El Nombre no puede ir Vacio').matches(/^[a-zA-Z\s]+$/).withMessage('El Nombre solo tiene que contener letras').run(req);
+    await check('numeroTelefono').notEmpty().withMessage('El Telefono no puede ir vacio').matches(/^\d+$/).withMessage('El telefono solo puede contener números').run(req);
+    await check('edad').notEmpty().withMessage('La Edad no puede ir vacia').matches(/^\d+$/).withMessage('La Edad tiene que ser un número').run(req);
     await check('sexo').notEmpty().withMessage('Campo Necesario').run(req);
     await check('membresia').notEmpty().withMessage('Campo Necesario').run(req);
 
@@ -121,7 +121,7 @@ const editarUsuarioForm = async (req,res) => {
 
     //Si el usuario no existe mandar mensaje de error
     if(!usuario) {
-        res.send('Usuario no existe')
+        res.render('./404')
     }
 
     res.render('app/editarUsuario',{
@@ -136,7 +136,12 @@ const guardarCambiosUsuario = async (req,res) => {
 
     const {id} = req.params;
     const membresias = await Membresia.findAll();
+    const usuario = await Usuarios.findByPk(id);
 
+    //Si el usuario no existe mandar mensaje de error
+    if(!usuario) {
+        res.render('./404')
+    }
 
     //Comprobar si la imagen se subio Correctamente
     if(req.file){
@@ -160,9 +165,9 @@ const guardarCambiosUsuario = async (req,res) => {
     }
 
     //Validar Campos
-    await check('nombre').notEmpty().withMessage('El Nombre no puede ir Vacio').run(req);
-    await check('numeroTelefono').notEmpty().withMessage('El Telefono no puede ir vacio').run(req);
-    await check('edad').isInt({gt:0}).withMessage('La Edad no puede ir vacia').run(req);
+    await check('nombre').notEmpty().withMessage('El Nombre no puede ir Vacio').matches(/^[a-zA-Z\s]+$/).withMessage('El Nombre solo tiene que contener letras').run(req);
+    await check('numeroTelefono').notEmpty().withMessage('El Telefono no puede ir vacio').matches(/^\d+$/).withMessage('El telefono solo puede contener números').run(req);
+    await check('edad').notEmpty().withMessage('La Edad no puede ir vacia').matches(/^\d+$/).withMessage('La Edad tiene que ser un número').run(req);
     await check('sexo').notEmpty().withMessage('Campo Necesario').run(req);
     await check('membresia').notEmpty().withMessage('Campo Necesario').run(req);
 
@@ -171,7 +176,7 @@ const guardarCambiosUsuario = async (req,res) => {
 
     //Si algún campo no se valido correctamente borramos la imagen que se cargo y mandamos los errores
     if(!resultado.isEmpty()){
-
+        
         if(req.file){
             fs.unlinkSync(`./public/uploads/${req.file.filename}`);
         }
@@ -196,13 +201,11 @@ const guardarCambiosUsuario = async (req,res) => {
                 edad: req.body.edad,
                 sexo: req.body.sexo,
                 membresiaId: req.body.membresia,
-                usuarioImagen: req.file.filename
+                fotoPerfil: usuario.fotoPerfil,
+                id
             }
         })
     }
-
-    //Encontrar Usuario en la DB
-    const usuario = await Usuarios.findByPk(id);
 
     //Si el usuario ya tiene foto y se edito, eliminar la existente de las descargas
     if(usuario.fotoPerfil && req.file){
@@ -238,8 +241,8 @@ const eliminarUsuario = async (req,res) => {
     //Validar que usuario exista
     const usuario = await Usuarios.findByPk(id);
 
-    if(!usuario){
-        return res.redirect('/gimnasio/listaUsuarios');
+    if(!usuario) {
+        res.render('./404')
     }
 
     //Eliminar foto
