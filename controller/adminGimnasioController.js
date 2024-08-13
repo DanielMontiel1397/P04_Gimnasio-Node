@@ -247,7 +247,9 @@ const eliminarUsuario = async (req,res) => {
 
     //Eliminar foto
     if(usuario.fotoPerfil){
-        fs.unlinkSync(`public/uploads/${usuario.fotoPerfil}`);  
+        if(fs.existsSync(`public/uploads/${usuario.fotoPerfil}`)){
+            fs.unlinkSync(`public/uploads/${usuario.fotoPerfil}`);  
+        }
     }
 
     //Eliminar Usuario
